@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="todoApp">
+<html ng-app="store">
 <head lang="en">
     <meta charset="UTF-8">
     <title>test</title>
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
-    <script src="scripts/todo.js"></script>
+    <script src="scripts/store.js"></script>
     <link rel="stylesheet" href="css/todo.css">
 </head>
 <body>
-        <h4>ToDo</h4>
-        <div ng-controller="TodoListController as todoList">
-                <span>
-                    {{todoList.remaining()}} of {{todoList.todos.length}}
-                    remaining
-                </span>
-            [<a href="" ng-click="todoList.archive()">archive</a>]
-            <ul class="unstyled">
-                    <li ng-repeat="todo in todoList.todos">
-                            <label class="checkbox">
-                                <input type="checkbox" ng-model="todo.done">
-                                <span class="done-{{todo.done}}">{{todo.text}}</span>
-                            </label>
-                    </li>
-            </ul>
-            <form ng-submit="todoList.addTodo()">
-                <input type="text" ng-model="todoList.todoText" size="30"
-                        placeholder="add new todo here">
-                <input class="btn-primary" type="submit" value="add">
-            </form>
+    <div ng-controller = "StoreController as store">
+
+       <!-- Products Container -->
+        <div class = "list-group">
+                <!--Product Container-->
+            <!--first product-->
+                <div ng-repeat="product in store.products" class="list-group-item">
+                    <h2>{{product.name}}</h2>
+                    <h4>${{product.price}}</h4>
+                    <p>{{product.description}}</p>
+                </div>
+            <button ng-show="store.products.canPurchase">Add to Cart</button>
         </div>
+    </div>
 </body>
 </html>
