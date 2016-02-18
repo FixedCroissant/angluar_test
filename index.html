@@ -7,20 +7,18 @@
     <script src="scripts/store.js"></script>
     <link rel="stylesheet" href="css/todo.css">
 </head>
-<body>
-    <div ng-controller = "StoreController as store">
-
-       <!-- Products Container -->
-        <div class = "list-group">
-                <!--Product Container-->
-            <!--first product-->
-                <div ng-repeat="product in store.products" class="list-group-item">
-                    <h2>{{product.name}}</h2>
-                    <h4>${{product.price}}</h4>
-                    <p>{{product.description}}</p>
-                </div>
-            <button ng-show="store.products.canPurchase">Add to Cart</button>
-        </div>
-    </div>
+<body ng-controller = "StoreController as store">
+   <ul class="list-group">
+       <li class="list-group-item" ng-repeat="product in store.products">
+            <h3>
+                {{product.name}}
+                    <em class="pull-right">
+                        <!--the pipe tells AngularJS to input it into currency.-->
+                        {{product.price | currency}}
+                    </em>
+                    <img ng-src="{{product.images[0].full}}"/>
+            </h3>
+       </li>
+   </ul>
 </body>
 </html>

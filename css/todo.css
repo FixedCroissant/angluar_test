@@ -2,3 +2,8 @@
     text-decoration: line-through;
     color:grey;
 }
+
+
+.pull-right{
+    margin-left:15px;
+}
